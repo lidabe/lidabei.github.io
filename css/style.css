@@ -1,0 +1,372 @@
+
+/* 一、CSS3的浏览器私有属性前缀是一个浏览器生产商经常使用的一种方式。它暗示该CSS属性或规则尚未成为W3C标准的一部分。
+二、以下是几种常用前缀
+chrome/safari : -webkit-
+FF: -moz-
+IE : -ms-
+Opera: -o-
+transition 过渡
+之前：元素从一个状态到另外一个状态（hover）直接切换，从开始状态到结束状态瞬间完成，中间过程几乎不可见。
+
+css3新增了过渡这个属性，可以实现元素不同状态之间的平滑过渡。
+
+transition-property:指定过渡的属性。 all为指定所有属性都有过渡效果。 必须写
+transition-duration: 过渡的时间，单位可以是s或者ms。
+
+ease 慢慢减速
+linear 匀速
+*/
+
+section {
+			background: rgba(255, 255, 255, 0.623);
+			margin: 35px auto;
+			padding: 15px;
+			width: 1050px;
+			/* 包裹高度 */
+			overflow: hidden;
+			/* 四角圆圆 */
+			border-radius: 15px;
+		}
+
+		/* childhood文字滚动 */
+		.boxe {
+
+			width: 100%;
+		
+			margin: 0 auto;
+		
+			overflow: hidden;
+		
+		}
+
+		.animate {	
+			padding-left: 20px;	
+			font-size: 40px;	
+			color: rgb(255, 255, 255);	
+			display: inline-block;		
+			white-space: nowrap;		
+			animation: 5s wordsLoop linear infinite normal;
+		
+		}
+				
+		@keyframes wordsLoop {		
+			0% {		
+				transform: translateX(100%);	
+				-webkit-transform: translateX(100%);		
+			}	
+			100% {	
+				transform: translateX(-100%);	
+				-webkit-transform: translateX(-100%);		
+			}		
+		}
+		
+		 
+		
+		@-webkit-keyframes wordsLoop {		
+			0% {	
+				transform: translateX(100%);	
+				-webkit-transform: translateX(100%);		
+			}	
+			100% {
+				transform: translateX(-100%);	
+			-webkit-transform: translateX(-100%);	
+			}		
+		}
+
+        /* 轮播图 */
+
+		.banner {
+			position:relative;
+			width: 680px;
+			height: 300px;
+		}
+
+		.banner .a-img-ban {
+			position: absolute;
+			top: 0;
+			left: 0;
+            /* position定位如果有重叠的时候，z-index愈大，就显示在最上面 */
+			z-index: 9;
+			width: 540px;
+			height: 295px;
+			-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+			filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+			opacity: 0;
+			transition: opacity 0.5s linear 0s;
+		}
+
+		.banner .a-img-ban .img-ban {
+			position: absolute;
+			width: 540px;
+			height: 295px;
+			border-radius: 10px;
+			z-index: 9;
+		}
+
+		.banner .img-ban-curr {
+			-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+			filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+			opacity: 1;
+			z-index: 10;
+		}
+
+		.banner ul {
+			width: 125px;
+		}
+
+		.banner ul li {
+			padding: 4.85%;
+			margin-bottom: 5.5%;
+			background: #e7e7e7;
+			
+			width: 90%;
+			height: 56.5px;
+			border-radius: 10px;
+			transition: background-color 0.3s linear 0s;
+		}
+
+		.banner ul li .mask {
+			position: relative;
+			top: -61px;
+			display: none;
+			width: 101%;
+			height: 101%;
+			background-color: rgba(85, 150, 100, 0.5);
+			border-radius: 5px;
+		}
+
+		.banner ul li.curr {
+			background-color: #79d48b;
+		}
+
+		.banner ul li img {
+			width: 100%;
+			height: 100%;
+			border-radius: 5px;
+		}
+
+
+/* 文章 */
+		.art {
+			width: 320px;
+		}
+
+		/* 标题：推荐文章 */
+		.art-txt {
+			margin-bottom: 10px;
+			padding-bottom: 5px;
+			line-height: 30px;
+			font-size: 16px;
+			/* 加了一条底部边框实线 */
+			border-bottom: 2px solid #226039;
+		}
+		
+		.art-list li {
+			height: 33px;
+			line-height: 33px;
+			font-size: 13px;
+			border-bottom: 1px solid #eee;
+		}
+
+		/* 鼠标悬停在文章初样式 */
+		.art-list li a:hover {
+			font-weight: bold;
+			color: #559664;
+		}
+
+		.art-list em {
+			float: left;
+			width: 25px;
+			line-height: 35px;
+		}
+
+		.art-list span {
+			float: left;
+			width: 290px;
+			font-size: 14px;
+			overflow: hidden;
+			/* 禁止文件自动换行。 */
+/* white-space，英语词组意思为空余时间，在计算机术语中的意思是泛空格符。white-space 属性设置如何处理元素内的空白。nowrap :强制在同一行内显示所有文本，直到文本结束或者遭遇 br 对象。 */
+/* 多个空格会被合并为一个;换行符无用,且文字不会受到盒子宽度的影响. */
+			white-space: nowrap;
+			/* text-overflow: clip|ellipsis|string;
+			ellipsis	显示省略符号来代表被修剪的文本。 */
+			text-overflow: ellipsis;
+		}
+/* 下半部分 */
+		article {
+			padding-top: 10px;
+		}
+
+		.art-right {
+			/* 这个很重要 */
+			padding-left: 20px;
+			width: 690px;
+			/* 分割左右的虚线 */
+			border-left: 1px dashed #aaaaaa;
+		}
+
+		.art-model {
+			padding: 18px;
+			margin-top: 20px;
+			/* box-shadow: h-shadow v-shadow blur spread color inset;
+			boxShadow 属性把一个或多个下拉阴影添加到框上。该属性是一个用逗号分隔阴影的列表 */
+			box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4), -5px -5px 10px rgba(255, 255, 255, 0.4);
+		}
+
+		.art-model h3 {
+			font-weight: 600;
+			font-size: 16px;
+			overflow: hidden;
+			/* 省略号 */
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+/* 发布时间和作者 */
+		.dateview {
+			margin: 5px 0;
+			color: rgb(92, 75, 75);
+			font-size: 12px;
+		}
+
+		.img-txt {
+			margin-top: 10px;
+			overflow: hidden;
+		}
+
+		.img-txt img {
+			width: 200px;
+			height: 138px;
+			border-radius: 3px;
+			/* 过渡属性 完成时间 运动曲线 延迟时间 */
+/* { transition:property duration timing-function delay; } */
+			transition: transform .3s linear;
+		}
+
+		.img-txt img:hover {
+			/* 缩放transform：scale
+			x:代表水平方向的缩放倍数.
+			y：代表垂直方向的缩放倍数。
+			 */
+			transform: scale(1.6);
+			transition: transform 0.6s linear;
+		}
+
+		/* 图片左浮动，和文字占一行 */
+		.img-txt dt {
+			float: left;
+			margin-right: 15px;
+			overflow: hidden;
+			
+		}
+			/* 文章的内容 */
+		.img-txt dd .deatil {
+			font-size: 14px;
+			line-height: 25px;
+			overflow: hidden;
+			/* 省略 */
+			text-overflow: ellipsis;
+			/* display: -webkit-box：必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。
+
+-webkit-box-orient： 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。
+
+text-overflow：可以用来多行文本的情况下，用省略号“...”隐藏超出范围的文本 。
+
+-webkit-line-clamp：<number> number用于显示的行数
+
+-webkit-box-orient 默认是水平的，当值设为vertical时为垂直排列 */
+			display: -webkit-box;
+			-webkit-line-clamp: 4;
+			-webkit-box-orient: vertical
+		}
+
+		/* 查看全文 */
+		.img-txt dd .btn {
+			float: right;
+			margin-top: 10px;
+			padding: 6px 10px;
+			color: #559664;
+			background: rgba(255, 255, 255, 0.6);
+			font-size: 12px;
+			text-align: center;
+			border-radius: 5px;
+		}
+
+		/* 鼠标悬停时变颜色 */
+		.img-txt dd .btn:hover {
+			background: #d8d8d8;
+		}
+/* 整个左下部分 */
+		.left-box {
+			width: 325px;
+		}
+		.left-box .left-box-pannel .uu .cc .yangshi:hover{
+			text-decoration: underline;
+		}
+		img {
+			transition: all 0.3s;
+		}
+		
+		
+		
+		.geud{
+			border-bottom:2px dashed #768f7c;
+			
+		}
+		.music-name{
+			font-family: 'Courier New', Courier, monospace;
+			font-size: 13;
+			
+			margin-left: 30;
+		}
+		
+		.music-img{
+			float: left;
+			width: 300px;
+			height: 270px;
+			border: 2px solid#eee;
+			border-radius: 10px;
+		}
+
+		.two-code img {
+			margin: 10px auto;
+			display: block;
+			width: 70%;
+			border-radius: 110px;
+		}
+		.two-code img:hover{
+			margin: 10px auto;
+			display: block;
+			width: 70%;
+			border-radius: 3px;
+		}
+
+		.sao-txt {
+			font-size: 12px;
+			text-align: center;
+		}
+
+		.fri-link {
+			overflow: hidden;
+		}
+
+		.fri-link li {
+			float: left;
+			margin: 6px;
+			padding: 8px 10px;
+			height: 22px;
+			line-height: 22px;
+			font-size: 14px;
+			text-align: center;
+			background: #559664;
+			border-radius: 20px 0px;
+		}
+
+		.fri-link li a {
+			color: #fff;
+		}
+
+		.fri-link li a:hover {
+			text-decoration: underline;
+		}
+		
